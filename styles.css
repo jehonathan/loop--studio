@@ -1,0 +1,521 @@
+    /*================== imported fonts ==================*/
+    
+    @import url('https://fonts.google.com/specimen/Alata');
+    @import url('https://fonts.google.com/specimen/Josefin+Sans');
+    /*==================Basic Reset ==================*/
+    
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    /*================== Custom Properties==================*/
+    
+     :root {
+        /*======= header height=======*/
+        --header-height: 6rem;
+        /*======= Colors =======*/
+        --white-color: hsl(0, 0%, 100%);
+        --black-color: hsl(0, 0%, 0%);
+        --dark-gray: hsl(0, 0%, 55%);
+        --purple-solid: hsl(277, 78%, 17%);
+        --purple-transparent: #350a4fb3;
+        --very-dark-gray: hsl(0, 0%, 41%);
+        /*======= Body Typograpghy=======*/
+        --big-font-size: 3.2rem;
+        --h1-font-size: 2.8rem;
+        --h2-font-size: 2.5rem;
+        --h3-font-size: 2.175rem;
+        --normal-font-size: 1.5rem;
+        --small-font-size: 1.2rem;
+        --heading-font-family: 'Josefin Sans', sans-serif;
+        --body-font-family: 'Alata', sans-serif;
+        /*======= font weights =======*/
+        --alta-font-weight: 400;
+        --jose-font-weight: 300;
+        --medium-font-weight: 500;
+        --semi-bold-font-weight: 600;
+        /*======= Margin and Padding=======*/
+        --margin-3: 3rem;
+        --margin-2-5: 2.5rem;
+        --margin-2: 2rem;
+        --margin-1-5: 1.5rem;
+        --margin-1: 1rem;
+        --section-padding: 5rem 0;
+        /*======= Layout =======*/
+        --num-of-grid-cols: 4;
+    }
+    /*================== Global Styles ==================*/
+    
+    html {
+        font-size: 62.5%;
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        font-size: var(--normal-font-size);
+        font-family: var(--body-font-family);
+    }
+    
+    h1,
+    h2,
+    h3 {
+        font-family: var(--heading-font-family);
+    }
+    
+    h1 {
+        font-size: var(--h1-font-size);
+    }
+    
+    h2 {
+        font-size: var(--h2-font-size);
+    }
+    
+    h3 {
+        font-size: var(--h3-font-size);
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    ul {
+        list-style: none;
+    }
+    
+    img {
+        height: auto;
+        max-width: 100%;
+        display: block;
+    }
+    /*================ Reusable Classes ================ */
+    
+    .container {
+        width: 100%;
+        max-width: 126rem;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+    
+    .grid__column {
+        display: grid;
+        grid-template-columns: repeat(var(--num-of-grid-cols), 1fr);
+        gap: 0 2rem;
+    }
+    
+    .section {
+        padding: var(--section-padding)
+    }
+    
+    .title {
+        line-height: 1.5;
+        text-align: center;
+        color: var(--black-color);
+        text-transform: uppercase;
+    }
+    /*================================ Header Section Styles ================================*/
+    
+    .page__header {
+        width: 100%;
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+        z-index: 1000;
+    }
+    
+    .page__header.active {
+        background-color: var(--purple-solid);
+    }
+    
+    .main_nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .logo_img {
+        max-width: 12rem;
+    }
+    
+    .hamburger-menu {
+        position: relative;
+        z-index: 1500;
+    }
+    
+    .hamburger-menu .times {
+        display: none;
+    }
+    
+    .menu-open .hamburger-menu .times {
+        display: block;
+    }
+    
+    .menu-open .hamburger-menu .bars {
+        display: none;
+    }
+    
+    .nav_list {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transform: scale(0);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: black;
+        transition: opacity .5s;
+        z-index: 1400;
+    }
+    
+    .menu-open .nav_list {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+    .nav_item {
+        margin-left: 1.5rem;
+    }
+    
+    .nav_item:not(:last-child) {
+        margin-bottom: 3rem;
+    }
+    
+    .nav_link {
+        font-size: 3rem;
+        color: var(--white-color);
+        text-transform: uppercase;
+        font-family: var(--heading-font-family);
+    }
+    
+    .nav_link:hover {
+        width: 75%;
+        border-bottom: 1px solid var(--white-color);
+    }
+    /*================================ Banner Section Styles ================================*/
+    
+    .banner__section {
+        width: 100%;
+        height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: url('./images/mobile/image-hero.jpg') center no-repeat;
+        background-size: cover;
+    }
+    
+    .banner_title {
+        width: 100%;
+        color: var(--white-color);
+        text-transform: uppercase;
+        font-size: var(--big-font-size);
+        padding: 1rem 3rem;
+        border: 1px solid var(--white-color);
+        letter-spacing: 1px;
+    }
+    
+    .desktop {
+        display: none;
+    }
+    /*================================ About Section Styles ================================*/
+    
+    .about__section {
+        padding: 5rem 0;
+    }
+    
+    .about__flex {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .about__image {
+        margin: 0 auto;
+    }
+    
+    .about_title {
+        margin: var(--margin-3) 0 var(--margin-2-5) 0;
+    }
+    
+    .column_two p {
+        text-align: center;
+        color: var(--very-dark-gray);
+    }
+    /*================================ GallerySection Styles ================================*/
+    
+    .gallery_header {
+        margin-bottom: var(--margin-3);
+    }
+    
+    button {
+        outline: none;
+        background-color: transparent;
+    }
+    
+    .button {
+        display: none;
+        text-transform: uppercase;
+        padding: .8rem 3.5rem;
+        font-size: var(--normal-font-size);
+        border: 1px solid var(--black-color);
+    }
+    
+    .button:hover {
+        color: var(--white-color);
+        background-color: var(--black-color);
+    }
+    
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .btn-bottom {
+        display: block;
+    }
+    
+    .gallery_item {
+        grid-column: span 4;
+        margin-bottom: var(--margin-2-5);
+        position: relative;
+    }
+    
+    .gallery_description {
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        position: absolute;
+        top: 5rem;
+        left: 1rem;
+        color: var(--white-color);
+    }
+    /*================================ Footer Section Styles ================================*/
+    
+    .footer-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .main__footer {
+        padding: 5rem 0;
+        background-color: var(--black-color);
+    }
+    
+    .footer_nav_list {
+        text-align: center;
+    }
+    
+    .footer_logo img {
+        margin-bottom: var(--margin-2-5);
+    }
+    
+    .footer_nav_link {
+        text-transform: capitalize;
+        color: var(--white-color);
+        font-family: var(--heading-font-family);
+    }
+    
+    .footer_nav_item {
+        margin-bottom: 1rem;
+    }
+    
+    .footer_nav_link:hover {
+        width: 70%;
+        border-bottom: 1px solid var(--white-color);
+    }
+    
+    .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: var(--margin-2-5);
+    }
+    
+    .social-media-link:not(:last-child) {
+        margin-right: 2rem;
+    }
+    
+    .copyrghts {
+        margin-top: var(--margin-2);
+        color: var(--white-color);
+        font-family: var(--heading-font-family);
+    }
+    /*+=========================================================================================
+    ###################################### MEDIA QUERIES  ######################################
+    +===========================================================================================*/
+    
+    @media screen and (min-width: 768px) {
+         :root {
+            /*======= header height=======*/
+            --header-height: 8rem;
+            /*======= Body Typograpghy=======*/
+            --big-font-size: 3.2rem;
+            --h1-font-size: 2.8rem;
+            --h2-font-size: 2.5rem;
+            --h3-font-size: 2.175rem;
+            --normal-font-size: 1.5rem;
+            --small-font-size: 1.2rem;
+            /*======= Margin and Padding=======*/
+            --margin-3: 3rem;
+            --margin-2-5: 2.5rem;
+            --margin-2: 2rem;
+            --margin-1-5: 1.5rem;
+            --margin-1: 1rem;
+            --section-padding: 8rem 0;
+            /*======= Layout =======*/
+            --num-of-grid-cols: 8;
+        }
+        /*======= header Section=======*/
+        .page__header.active {
+            height: 6rem;
+        }
+        .hamburger-menu {
+            display: none;
+        }
+        .nav_list {
+            width: initial;
+            height: initial;
+            position: initial;
+            opacity: 1;
+            transform: scale(1);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: initial;
+            background-color: transparent;
+        }
+        .nav_item {
+            margin: 0;
+        }
+        .nav_item:not(:last-child) {
+            margin-bottom: 0;
+            margin-right: var(--margin-2);
+        }
+        .nav_link {
+            font-size: 1.8rem;
+            text-transform: capitalize;
+        }
+        /*======= Banner Section=======*/
+        .banner_title {
+            width: 50%;
+        }
+        /*======= About Section=======*/
+        .about__section {
+            padding: 10rem 0 4rem 0;
+        }
+        /*======= Gallery Section=======*/
+        .gallery_item {
+            grid-column: span 4;
+        }
+        .button {
+            display: block;
+        }
+        .btn-bottom {
+            display: none;
+        }
+        .gallery_header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        /*================================ Footer Section Styles ================================*/
+        .footer-flex {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .main__footer {
+            padding: 5rem 0;
+            background-color: var(--black-color);
+        }
+        .footer_nav_list {
+            text-align: initial;
+            display: flex;
+        }
+        .footer_logo img {
+            margin-bottom: var(--margin-2);
+        }
+        .footer_nav_link {
+            color: var(--white-color);
+            font-family: var(--heading-font-family);
+        }
+        .footer_nav_item {
+            margin-bottom: 0;
+            margin-right: 2rem;
+        }
+        .footer_nav_link:hover {
+            width: 70%;
+            border-bottom: 1px solid var(--white-color);
+        }
+        .social-icon {
+            justify-content: space-between;
+            margin-top: 0;
+        }
+    }
+    /*================ Large Screens ================*/
+    
+    @media screen and (min-width: 968px) {
+         :root {
+            /*======= Body Typograpghy=======*/
+            --big-font-size: 3.6rem;
+            --h1-font-size: 2.8rem;
+            --h2-font-size: 2.5rem;
+            --h3-font-size: 2.175rem;
+            --normal-font-size: 1.5rem;
+            --small-font-size: 1.2rem;
+            /*======= Margin and Padding=======*/
+            --margin-3: 4rem;
+            --margin-2-5: 2.5rem;
+            --margin-2: 2rem;
+            --margin-1-5: 1.5rem;
+            --margin-1: 1rem;
+            --section-padding: 8rem 0;
+            /*======= Layout =======*/
+            --num-of-grid-cols: 12;
+        }
+        .title {
+            text-align: initial;
+        }
+        /*======= About Section=======*/
+        .desktop {
+            display: block;
+        }
+        .mobile {
+            display: none;
+        }
+        .about__image {
+            margin: 0;
+            max-width: 80%;
+        }
+        .about__flex {
+            flex-direction: row;
+            position: relative;
+        }
+        .column_two {
+            position: absolute;
+            top: 9rem;
+            left: 46rem;
+            max-width: 50%;
+            padding: 3rem 0 1rem 6rem;
+            background-color: var(--white-color);
+        }
+        .column_two p {
+            text-align: initial;
+        }
+        /*======= Gallery Section=======*/
+        .gallery_item {
+            grid-column: span 3;
+        }
+        .gallery_description {
+            top: 2rem;
+        }
+    }
